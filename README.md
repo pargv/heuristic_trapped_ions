@@ -27,7 +27,7 @@ Below, we provide a brief description of the code and data present in the reposi
 
 ### Demos
 
-* `main.ipynb` : this notebook provides an example of the complete training pipeline for a random instance of the Sherrington-Kirkpatrick model for $n=6$ qubits (see Fig. 2 in our [paper](https://www.arxiv.org/abs/2505.15898)). This pipeline consists of the following steps:
+* `main.ipynb` : this notebook provides an example of a complete training pipeline for a random instance of the Sherrington-Kirkpatrick model for $n=6$ qubits (see Fig. 2 in our [paper](https://www.arxiv.org/abs/2505.15898)). This pipeline consists of the following steps:
   + calculating the ion-ion couplings
   + generating a random SK instance
   + calculating a matrix of the problem Hamiltonian
@@ -37,15 +37,21 @@ Below, we provide a brief description of the code and data present in the reposi
 
 * `interplay.ipynb` : this notebook provides an example of calculating the expressbility of the ion native ansatz. It shows the interplay between the circuit expressibility and trainability when using problem-agnostic and problem-specific configurations of hyperparameters (see Fig. 3 in our [paper](https://www.arxiv.org/abs/2505.15898)).
 
-* `statistics.ipynb` : this notebook provides a statistical analysis of the ion native QAOA performance. This analysis is based on the data obtained in our HPC simulations. For each system size, $n=5$-$10$ and $15$ qubits, 100 random instances of the SK model were sampled. For each instance, the problem-specific ansatz hyperparameters were obtained followed by the evaluation of the ion native QAOA performance in the range of circuit depths up to $p=10$ layers (see Figs. 4 and 5 in our [paper](https://www.arxiv.org/abs/2505.15898)).
+* `statistics.ipynb` : this notebook provides a statistical analysis of the ion native QAOA performance. This analysis is based on the data obtained in our HPC simulations. For each system size, $n=5$-10 and $15$ qubits, 100 random instances of the SK model were sampled. For each instance, the problem-specific ansatz hyperparameters were obtained followed by the evaluation of the ion native QAOA performance in the range of circuit depths up to $p=10$ layers (see Figs. 4 and 5 in our [paper](https://www.arxiv.org/abs/2505.15898)).
+
+* `state_prep.ipynb` : this notebook provides the results of applying the proposed heuristic to search hyperparameters well-suited for the GHZ state preparation problem. 
+
+* `rank.ipynb` : this notebook provides a dimension analysis of the subspace prepared by the ion native ansatz. It takes the optimal variational parameters obtained in the HPC simulations and applies the ion native ansatz to the initial $| + \rangle$ state layer-by-layer. Then, it constructs a matrix, where rows are state vectors obtained after applying each layer of the ion native circuit, and evaluates the rank of this matrix based on SVD. 
 
 ### Data files
 
 * `example_data` : output data files generated in demos above.
 
-* `data_cycle_{i}` : data obtained after the `i`-th cycle of training in our HPC simulations. For each number of qubits $n$, 100 random instances of the SK model were sampled. Each cycle consists of identifying hyperparameters for every specific instance, followed by the Hamiltonian minimization using the obtained ansatzes. After each cycle, the fraction of solved instances was evaluated using a $p = n$ layer circuit. Each subsequent cycle was run only for the remaining unsolved instances. The identified problem-specific hyperpameters are stored in the files `{n}q/{n}q_nsk_{j}.txt`, while the  performance evaluation - in the files `{n}q/{n}q_ev_{j}.txt`, where `n` is the number of qubits and `j` is the index of random SK instance ($j=$ 1-100). 
+* `data` : data obtained after each of four cycles of training in our HPC simulations. For each number of qubits $n$, 100 random instances of the SK model were sampled. Each cycle consists of identifying hyperparameters for every specific instance, followed by the Hamiltonian minimization using the obtained ansatzes. After each cycle, the fraction of solved instances was evaluated using a $p = n$ layer circuit. Each subsequent cycle was run only for the remaining unsolved instances. The identified problem-specific hyperpameters are stored in the files `{n}q/{n}q_nsk_{j}.txt`, while the  performance evaluation - in the files `{n}q/{n}q_ev_{j}.txt`, where `n` is the number of qubits and `j` is the index of random SK instance ($j=$ 1-100). Four cycles of training were followed by the layerwise performance evaluation for the ion native QAOA in the range of circuit depths up to $p=10$ layers. The results of this evaluation are stored in the files `{n}q/{n}q_lw_{j}.txt` in the folder `cycle4`.
 
-* `data` : final data obtained after 4 cycles of training followed by the layerwise evaluation of the ion native QAOA performance in the range of circuit depths up to $p=10$ layers. The results of this evaluation are stored in the files `{n}q/{n}q_lw_{j}.txt`. Also, this folder contains the data for standard QAOA for $n=6$ and $8$ qubits (folders `6q_qaoa/` and `8q_qaoa/`).
+* `data_qaoa` : contains the data for standard QAOA simulations for $n=6$ and $8$ qubits in the range of circuit depths up to $p=10$ layers for the same pool of S-K instances (folders `6q_qaoa/` and `8q_qaoa/`).
+
+* `state` : contains the data for the GHZ-state preparation problem.
 
 ### HPC Scripts
 
