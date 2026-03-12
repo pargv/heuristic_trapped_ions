@@ -85,3 +85,5 @@ The following scripts were used to perform simulations:
 * `evaluate_lw.py` : code for evaluating the ion native QAOA performance in the range of circuit depths up to $p_{\max}$ layers.
 
 * `evaluate_lw_qaoa.py` : code for evaluating the standard QAOA performance in the range of circuit depths up to $p_{\max}$ layers.
+
+* `evaluate_lw_fixed_A.py` : code for evaluating the ion native QAOA performance in the range of circuit depths up to $p_{\max}$ layers for a specific (fixed, non-trained) configuration of hyperparameters.
