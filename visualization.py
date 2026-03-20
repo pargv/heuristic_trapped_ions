@@ -357,7 +357,7 @@ def plot_avg_data(data_sets,labels,markers,colors,ylabel,ymin,ncol=2,loc=2):
 def plot_data(data_sets,labels,markers,colors,ylabel,ymin,ncol=2,loc=2,log=0,h=0.6):
     
     p = data_sets[0].shape[0]
-    fig = plt.figure(figsize=(h*p,3.5))
+    fig = plt.figure(figsize=(h*p,4))
     ax = plt.gca()
     
     for i, (data, label) in enumerate(zip(data_sets, labels)):
