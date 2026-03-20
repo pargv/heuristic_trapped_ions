@@ -1,0 +1,27 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: >-
+  Heuristic for searching problem specific hyperparameters
+  of ion native ansatz
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Georgii
+    family-names: Paradezhenko
+    email: g.paradezhenko@skoltech.ru
+    orcid: 'https://orcid.org/0000-0002-1909-3716'
+  - given-names: Daniil
+    family-names: Rabinovich
+    email: d.rabinovich@skoltech.ru
+  - given-names: Ernesto
+    family-names: Campos
+    email: e.campos@skoltech.ru
+  - given-names: Kirill
+    family-names: Lakhmanskiy
+    email: k.lakhmanskiy@rqc.ru
+repository-code: 'https://github.com/pargv/heuristic_trapped_ions/'
+version: '1.0'
