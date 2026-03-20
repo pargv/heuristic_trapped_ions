@@ -29,7 +29,7 @@ def plot_expr(L, expr_sets, labels, markers, colors, ymax=1e1):
     ax.set_ylabel('$D_{\mathrm{KL}}$', fontsize=22, labelpad=5)
     ax.set_ylim([1e-4, ymax])
     ax.set_xticks(L)
-    ax.legend(fontsize=16,framealpha=1.0,loc='best', bbox_to_anchor=(0.5, 0.5, 0.5, 0.35),handleheight=1.0, 
+    ax.legend(fontsize=16,framealpha=1.0,loc='best', bbox_to_anchor=(0.5, 0.3, 0.5, 0.35),handleheight=1.0, 
               labelspacing=0.01)
     set_label_font(ax,fs=16)
     
@@ -354,10 +354,10 @@ def plot_avg_data(data_sets,labels,markers,colors,ylabel,ymin,ncol=2,loc=2):
     set_label_font(ax,16)
     plt.show()
 
-def plot_data(data_sets,labels,markers,colors,ylabel,ymin,ncol=2,loc=2,log=0):
+def plot_data(data_sets,labels,markers,colors,ylabel,ymin,ncol=2,loc=2,log=0,h=0.6):
     
     p = data_sets[0].shape[0]
-    fig = plt.figure(figsize=(0.6*p,3.5))
+    fig = plt.figure(figsize=(h*p,3.5))
     ax = plt.gca()
     
     for i, (data, label) in enumerate(zip(data_sets, labels)):
@@ -369,13 +369,13 @@ def plot_data(data_sets,labels,markers,colors,ylabel,ymin,ncol=2,loc=2,log=0):
                    edgecolor='black', lw=0.9, label=label)
         ax.plot(pp, f, '--', color = colors[i], lw = 0.75)
         
-    ax.set_xticks(pp)
-    ax.set_xlabel('$p$', fontsize=22)
+    ax.set_xticks(pp[1::2])
+    ax.set_xlabel('$k$', fontsize=22)
     ax.set_ylabel(ylabel, fontsize=22)
     ax.set_ylim(ymin=ymin)
     if log:
         ax.set_yscale('log')
-    ax.legend(loc=loc,fontsize=16,framealpha=1.0,ncol=ncol,handleheight=1.0, 
+    ax.legend(loc=loc,fontsize=18,framealpha=1.0,ncol=ncol,handleheight=1.0, 
               labelspacing=0.01,columnspacing=0.025)
     
     ax.grid(visible=True, which='minor', axis='both',color='tab:gray', linestyle=(0, (1, 3)), linewidth=1.0, alpha=0.3)

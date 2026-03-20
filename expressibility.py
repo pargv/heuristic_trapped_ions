@@ -47,6 +47,18 @@ def generate_fidelities_data_random_A(n, p_max, n_samples, n_A, coupling_mat, pa
         file_dump(A, f"{path}data_A_{i}.csv", format='w')
         for p in range(p_max):
             file_dump(data[p,:], f"{path}data_A_{i}.csv")
+            
+            
+def generate_fidelities_data_qaoa(n, p_max, n_samples, H, fname, path):
+    
+    Q = QAOA(1, H, H)
+    
+    data = Q.sample_fidelities(p_max,n_samples)
+    
+    file_dump(np.zeros(n), f"{path}{fname}.csv", format='w')
+    
+    for p in range(p_max):
+        file_dump(data[p,:], f"{path}{fname}.csv")
 
 
 # =============================================================================

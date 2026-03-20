@@ -119,7 +119,7 @@ class QAOA:
         
         return np.real(ex)
     
-  #__________________________________________________________________________________________________________ 
+   #__________________________________________________________________________________________________________ 
           
     def overlap(self,state):
         
@@ -130,6 +130,36 @@ class QAOA:
                 olap+= np.absolute(state[i])**2
         
         return olap
+    
+    #__________________________________________________________________________________________________________ 
+    
+    
+    def sample_fidelities_fixed_depth(self, p, n_samples):
+         
+        F = np.zeros(n_samples)
+        
+        for s in range(n_samples):
+            pars = np.random.uniform(0, 2*np.pi, 2*p)
+            psi1 = self.qaoa_ansatz(pars)
+                
+            pars = np.random.uniform(0, 2*np.pi, 2*p)
+            psi2 = self.qaoa_ansatz(pars)
+                
+            F[s] = (np.abs(np.dot(psi1.conj().T, psi2).item())**2)
+                
+        return F
+    
+    #__________________________________________________________________________________________________________ 
+    
+    def sample_fidelities(self, p_max, n_samples):
+
+        fidelities = np.zeros((p_max, n_samples))
+        
+        for p in range(1, p_max + 1):
+            self.p = p
+            fidelities[p-1,:] = self.sample_fidelities_fixed_depth(p,n_samples)
+                
+        return fidelities
     
    #__________________________________________________________________________________________________________ 
     
