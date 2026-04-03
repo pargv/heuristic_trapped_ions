@@ -2,7 +2,7 @@
 
 In this repo, we share the code and data for reproducing numerical results presented in our paper:
 
-**Heuristic ansatz design for trainable ion-native digital-analog quantum circuits** (https://www.arxiv.org/abs/2505.15898)
+**Problem specific ion native ansatz for combinatorial optimization** (https://www.arxiv.org/abs/2505.15898)
 
 ## Files
 
